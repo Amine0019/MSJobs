@@ -35,4 +35,14 @@ public class JobService implements IJobService {
         } else
             return null;
     }
+
+    @Override
+    public String deleteJob(int id) {
+        if (jobRepository.findById(id).isPresent()) {
+            jobRepository.deleteById(id);
+            return "Job supprimé";
+        } else
+            return "Job non supprimé";
+    }
+
 }
