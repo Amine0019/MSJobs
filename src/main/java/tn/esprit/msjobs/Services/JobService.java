@@ -17,4 +17,9 @@ public class JobService implements IJobService {
     public List<Jobs> getAll() {
         return jobRepository.findAll();
     }
+
+    @Override
+    public Jobs addJob(Jobs job) {
+        return jobRepository.save(job);
+    }
 }

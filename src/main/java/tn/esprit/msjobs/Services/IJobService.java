@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IJobService {
     public List<Jobs> getAll();
+    public Jobs addJob(Jobs job);
 }
