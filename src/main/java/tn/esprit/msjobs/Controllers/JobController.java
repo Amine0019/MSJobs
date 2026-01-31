@@ -11,6 +11,7 @@ import tn.esprit.msjobs.Services.JobService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/Jobs")
 public class JobController {
 
     private String title = "Hello I am JobController";
@@ -34,6 +35,13 @@ public class JobController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Jobs> createJob(@RequestBody Jobs job) {
         return new ResponseEntity<>(jobService.addJob(job), HttpStatus.CREATED);
+    }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Jobs> updateJob(@PathVariable("id") int id,
+                                                   @RequestBody Jobs job) {
+        return ResponseEntity.ok(jobService.updateJob(id, job));
     }
 
 }

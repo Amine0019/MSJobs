@@ -22,4 +22,17 @@ public class JobService implements IJobService {
     public Jobs addJob(Jobs job) {
         return jobRepository.save(job);
     }
+
+    @Override
+    public Jobs updateJob(int id, Jobs newJob) {
+        if (jobRepository.findById(id).isPresent()) {
+
+            Jobs existingJob = jobRepository.findById(id).get();
+            existingJob.setService(newJob.getService());
+            existingJob.setEtat(newJob.isEtat());
+
+            return jobRepository.save(existingJob);
+        } else
+            return null;
+    }
 }
